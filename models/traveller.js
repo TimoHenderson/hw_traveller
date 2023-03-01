@@ -19,11 +19,15 @@ Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
 };
 
 Traveller.prototype.calculateTotalDistanceTravelled = function () {
-  return this.journeys.reduce((total, journey) => total + journey.distance, 0)
+  return this.journeys.reduce((total, journey) => total + journey.distance, 0);
 };
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
 
+  const allModes = this.journeys.map(journey => journey.transport);
+  const uniqueModes = [];
+  allModes.forEach(mode => { if (!uniqueModes.includes(mode)) uniqueModes.push(mode); });
+  return uniqueModes;
 };
 
 
